@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Microsoft on Grey Wall IT</title>
+    <link>https://GreyWallIT.github.io/tags/microsoft/</link>
+    <description>Recent content in Microsoft on Grey Wall IT</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019. All rights reserved.</copyright>
+    <lastBuildDate>Wed, 19 Jun 2019 20:52:59 -0500</lastBuildDate>
+    
+	<atom:link href="https://GreyWallIT.github.io/tags/microsoft/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Setting PowerShell as the Deafult Shell in Server Core</title>
+      <link>https://GreyWallIT.github.io/windows/powershelldefaultservercore/</link>
+      <pubDate>Wed, 19 Jun 2019 20:52:59 -0500</pubDate>
+      
+      <guid>https://GreyWallIT.github.io/windows/powershelldefaultservercore/</guid>
+      <description>The default shell for Windows Server Core is the command prompt. Ideally you will change that to PowerShell so you don&amp;rsquo;t have to manually run PowerShell if you ever need to RDP into the server. To make this change login to your server core machine and run PowerShell:
+C:\windows\system32\powershell.exe  Edit the registry to set PowerShell as the default Shell:
+Set-ItemProperty -Path &#39;HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon&#39; -Name Shell -Value &#39;powershell.exe&#39;  The next time you login the shell will immediately run PowerShell.</description>
+    </item>
+    
+  </channel>
+</rss>
