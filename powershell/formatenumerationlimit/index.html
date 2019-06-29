@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.54.0" />
 
-  <title>Topics &middot; Grey Wall IT</title>
+  <title>FormatEnumerationLimit &middot; Grey Wall IT</title>
 
   
   
@@ -39,8 +39,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
  
-  
-  <link rel="alternate" type="application/rss+xml" title="Grey Wall IT" href="https://GreyWallIT.github.io/topics/index.xml" />
   
 
   
@@ -125,10 +123,6 @@
   <div class="pure-menu social">
   <ul class="pure-menu-list">
 
-    
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://GreyWallIT.github.io/topics/index.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
-    </li>
     
 
     
@@ -236,28 +230,40 @@
 
 
 <div class="header">
-  <h1>Topics</h1>
+  <h1>FormatEnumerationLimit</h1>
+  <h2></h2>
 </div>
 <div class="content">
-  <ul>
-  
-  
-    <li>
-      <a href="microsoft">microsoft</a>
-      <span>&#40;2&#41;</span>
-    </li>
-  
-    <li>
-      <a href="powershell">powershell</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-    <li>
-      <a href="windows">windows</a>
-      <span>&#40;1&#41;</span>
-    </li>
-  
-  </ul>
+  <p>Sometimes there is output from a cmdlet that gets truncated on the screen, even though there is more space to fill in the console window.</p>
+
+<p><img src="https://GreyWallIT.github.io/img/powershell/truncatedoutput.png" alt="" /></p>
+
+<p>To not truncate the output of your PowerShell commands set the variable <strong>$FormatEnumerationLimit</strong> to <strong>-1</strong></p>
+
+<pre><code>$FormatEnumerationLimit=-1
+</code></pre>
+
+<p>Now the output from cmdlets will fill the console window.</p>
+
+<p><img src="https://GreyWallIT.github.io/img/powershell/untruncatedoutput.png" alt="" /></p>
+
+<p>So what is the <strong>$FormatEnumerationLimit</strong> variable? Here is the definition from the <em>about_preferences</em> doc:</p>
+
+<blockquote>
+<p>$FormatEnumerationLimit
+Determines how many enumerated items are included in a display. This variable does not affect the underlying objects; just the display. When the value of $FormatEnumerationLimit is less than the number of enumerated items, PowerShell adds an ellipsis (&hellip;) to indicate items not shown.</p>
+
+<p>Valid values: Integers (Int32)</p>
+
+<p>Default value: 4</p>
+</blockquote>
+
+<p><strong><em>Link:</em></strong> <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-6#formatenumerationlimit">About Preference Variables - $FormatEnumerationLimit</a></p>
+
+<p>This means that when your output has an object with multiple items in it, like an array, the number of those items to be shown will be at most the number you assign to that variable. Assigning a value of -1 essentially says &ldquo;show me everything as long as I have space&rdquo;. Here is a comparison between a value of 4, the default, and -1.</p>
+
+<p><img src="https://GreyWallIT.github.io/img/powershell/enumerationcomparison.png" alt="" /></p>
+
 </div>
 
 </div>
@@ -271,3 +277,4 @@
 
 </body>
 </html>
+
