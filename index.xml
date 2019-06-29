@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>FormatEnumerationLimit</title>
+      <title>FormatEnumerationLimit - Reduce Truncating Output</title>
       <link>https://GreyWallIT.github.io/powershell/formatenumerationlimit/</link>
       <pubDate>Fri, 28 Jun 2019 21:28:09 -0500</pubDate>
       
@@ -25,7 +25,7 @@ So what is the $FormatEnumerationLimit variable? Here is the definition from the
     </item>
     
     <item>
-      <title>Setting PowerShell as the Deafult Shell in Server Core</title>
+      <title>Setting PowerShell as the Default Shell in Server Core</title>
       <link>https://GreyWallIT.github.io/windows/powershelldefaultservercore/</link>
       <pubDate>Wed, 19 Jun 2019 20:52:59 -0500</pubDate>
       
