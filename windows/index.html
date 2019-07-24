@@ -240,15 +240,68 @@
     </h1>
 
 
+    <a href="https://GreyWallIT.github.io/windows/installwacsrvcore/">Install Windows Admin Center on Windows Server Core</a>
+    
+
+<p>The Windows Admin Center is a free tool from Microsoft that I like to think of as the next iteration of Windows Server Manager or the RSAT tools. It lets you manage your servers, clusters, hyper-converged infrastructure, Windows 10 computers, and a host of other features and functions come with that. If you have co-workers that manage servers but are intimidated by the command line it makes it difficult to be able to deploy Windows Server Core in your environment as it may lessen the ability of the team to manage those servers. Windows Admin Center gives the GUI back to Windows Server Core installations (somewhat).</p>
+
+<p>After logging in to your server run PowerShell.</p>
+
+<pre><code>C:\temp\powershell.exe
+</code></pre>
+
+<h3 id="step-1-download-windows-admin-center">Step 1 - Download Windows Admin Center</h3>
+
+<p>Download the latest version of the Windows Admin Center MSI from Microsoft to your preferred directory. I am putting it in C:\temp.</p>
+
+<pre><code>Invoke-WebRequest https://aka.ms/wacdownload -UseBasicParsing -OutFile C:\temp\WAC.msi
+</code></pre>
+
+<h3 id="step-2-get-a-certificate">Step 2 - Get a Certificate</h3>
+
+<p>We don&rsquo;t have a certificate authority setup for this walkthrough, so we&rsquo;ll make a new self-signed certificate to use. Windows Admin Center requires an HTTPS connection. In this example we&rsquo;re creating a certificate that will be valid for two years from today&rsquo;s date. The <em>Get-Date</em> cmdlet returns today&rsquo;s date. When we surround that with parentheses we can use the <em>AddDays</em> method to add as many days after today&rsquo;s date as we want. 730 days is (roughly) two years from today&rsquo;s date.</p>
+
+<pre><code>New-SelfSignedCertificate -CertStoreLocation 'Cert:\LocalMachine\My' -Type SSLServerAuthentication -DnsName 'WACSRV' -NotAfer (Get-Date).AddDays(730)
+</code></pre>
+
+<h3 id="step-3-get-a-thumbprint">Step 3 - Get a Thumbprint</h3>
+
+<p>Get the thumbprint of the certificate you want to use and store it in a variable for later use. I will use the self-signed certificate I just made</p>
+
+<pre><code>$thumbprint = (Get-ChildItem Cert:\LocalMachine\My\ -SSLServerAuthentication).Thumbprint
+</code></pre>
+
+<h3 id="step-4-install-windows-admin-center">Step 4 - Install Windows Admin Center</h3>
+
+<p>Install Windows Admin Center using MSIEXEC. The number for SME_PORT can be whichever port you want to run the admin center on. I&rsquo;m using port 9999.</p>
+
+<p><strong>NOTE: The documentation states that dot notation for installing with MSIEXEC will not work if you are executing from PowerShell, so be sure to put the full path in for the location of the MSI file.</strong></p>
+
+<pre><code>msiexec.exe /I C:\temp\WAC.msi /qn SME_PORT=9999 SME_THUMBPRINT=$thumbprint SSL_CERTIFICATEOPTION=installed /Lvx C:\temp\WAC.log
+</code></pre>
+
+<h3 id="step-5-verify-the-wac-is-running">Step 5 - Verify the WAC is Running</h3>
+
+<p>You can review the log to see if the installation was successful, or try to connect to the admin center with Invoke-WebRequest (I installed to port 9999, so I am connecting to port 9999)</p>
+
+<pre><code>Invoke-WebRequest https://localhost:9999
+</code></pre>
+
+<p>If you get a powershell error &ldquo;Could not establish trust relationship for the SSL/TLS secure channel&rdquo; or &ldquo;The remote server returned an error: (401) Unauthorized&rdquo; you know it is up and running. The error in our case for this post is from the Windows Admin Center running with a self-signed certificate. If you access this site from an Edge (version 1709 or later) or Chrome browser you should get a prompt to login and view the Admin Center in all its glory. The login credentials will be any administrative credentials of the server running WAC.</p>
+
+<p><img src="https://GreyWallIT.github.io/img/windows/WAC042019.png" alt="&quot;Windows Admin Center&quot;" /></p>
+
+    <br>
+
     <a href="https://GreyWallIT.github.io/windows/powershelldefaultservercore/">Setting PowerShell as the Default Shell in Server Core</a>
     <p>The default shell for Windows Server Core is the command prompt. Ideally you will change that to PowerShell so you don&rsquo;t have to manually run PowerShell if you ever need to RDP into the server. To make this change login to your server core machine and run PowerShell:</p>
 
-<pre><code>C:\windows\system32\powershell.exe
+<pre><code class="language-powershell">C:\windows\system32\powershell.exe
 </code></pre>
 
 <p>Edit the registry to set PowerShell as the default Shell:</p>
 
-<pre><code>Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name Shell -Value 'powershell.exe'
+<pre><code class="language-powershell">Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name Shell -Value 'powershell.exe'
 </code></pre>
 
 <p>The next time you login the shell will immediately run PowerShell.</p>

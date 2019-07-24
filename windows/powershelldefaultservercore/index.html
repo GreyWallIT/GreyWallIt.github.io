@@ -236,12 +236,12 @@
 <div class="content">
   <p>The default shell for Windows Server Core is the command prompt. Ideally you will change that to PowerShell so you don&rsquo;t have to manually run PowerShell if you ever need to RDP into the server. To make this change login to your server core machine and run PowerShell:</p>
 
-<pre><code>C:\windows\system32\powershell.exe
+<pre><code class="language-powershell">C:\windows\system32\powershell.exe
 </code></pre>
 
 <p>Edit the registry to set PowerShell as the default Shell:</p>
 
-<pre><code>Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name Shell -Value 'powershell.exe'
+<pre><code class="language-powershell">Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name Shell -Value 'powershell.exe'
 </code></pre>
 
 <p>The next time you login the shell will immediately run PowerShell.</p>

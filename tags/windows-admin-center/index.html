@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.54.0" />
 
-  <title>Windows Server &middot; Grey Wall IT</title>
+  <title>Windows Admin Center &middot; Grey Wall IT</title>
 
   
   
@@ -40,7 +40,7 @@
 
  
   
-  <link rel="alternate" type="application/rss+xml" title="Grey Wall IT" href="https://GreyWallIT.github.io/tags/windows-server/index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Grey Wall IT" href="https://GreyWallIT.github.io/tags/windows-admin-center/index.xml" />
   
 
   
@@ -127,7 +127,7 @@
 
     
     <li class="pure-menu-item">
-      <a class="pure-menu-link" href="https://GreyWallIT.github.io/tags/windows-server/index.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      <a class="pure-menu-link" href="https://GreyWallIT.github.io/tags/windows-admin-center/index.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
     </li>
     
 
@@ -236,7 +236,7 @@
 
 
 <div class="header">
-  <h1>Windows Server</h1>
+  <h1>Windows Admin Center</h1>
 </div>
 
 <div class="content">
@@ -298,68 +298,6 @@
   
   <footer>
     <a href="https://GreyWallIT.github.io/windows/installwacsrvcore/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="https://GreyWallIT.github.io/windows/powershelldefaultservercore/">Setting PowerShell as the Default Shell in Server Core</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>19 Jun 2019, 20:52</time>
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="https://GreyWallIT.github.io/tags/microsoft">Microsoft</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://GreyWallIT.github.io/tags/windows">Windows</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://GreyWallIT.github.io/tags/powershell">PowerShell</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://GreyWallIT.github.io/tags/windows-server">Windows Server</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://GreyWallIT.github.io/tags/windows-server-core">Windows Server Core</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="https://GreyWallIT.github.io/tags/server-core">Server Core</a>
-    
-  </div>
-  
-  
-
-</div>
-
-  </header>
-
-  <p>
-  The default shell for Windows Server Core is the command prompt. Ideally you will change that to PowerShell so you don&rsquo;t have to manually run PowerShell if you ever need to RDP into the server. To make this change login to your server core machine and run PowerShell:
-C:\windows\system32\powershell.exe  Edit the registry to set PowerShell as the default Shell:
-Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name Shell -Value 'powershell.exe'  The next time you login the shell will immediately run PowerShell.
-  </p>
-
-  
-  <footer>
-    <a href="https://GreyWallIT.github.io/windows/powershelldefaultservercore/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
   </footer>
   
 </article>

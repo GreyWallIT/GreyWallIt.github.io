@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://GreyWallIT.github.io/windows/installwacsrvcore/</loc>
+    <lastmod>2019-07-23T21:45:37-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://GreyWallIT.github.io/powershell/formatenumerationlimit/</loc>
     <lastmod>2019-06-28T21:28:09-05:00</lastmod>
   </url>
@@ -31,30 +36,30 @@
   
   <url>
     <loc>https://GreyWallIT.github.io/windows/</loc>
-    <lastmod>2019-06-19T20:52:59-05:00</lastmod>
+    <lastmod>2019-07-23T21:45:37-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://GreyWallIT.github.io/</loc>
-    <lastmod>2019-06-28T21:28:09-05:00</lastmod>
+    <lastmod>2019-07-23T21:45:37-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://GreyWallIT.github.io/tags/microsoft/</loc>
-    <lastmod>2019-06-28T21:28:09-05:00</lastmod>
+    <lastmod>2019-07-23T21:45:37-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://GreyWallIT.github.io/topics/microsoft/</loc>
-    <lastmod>2019-06-28T21:28:09-05:00</lastmod>
+    <lastmod>2019-07-23T21:45:37-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://GreyWallIT.github.io/tags/powershell/</loc>
-    <lastmod>2019-06-28T21:28:09-05:00</lastmod>
+    <lastmod>2019-07-23T21:45:37-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -66,43 +71,49 @@
   
   <url>
     <loc>https://GreyWallIT.github.io/tags/server-core/</loc>
-    <lastmod>2019-06-19T20:52:59-05:00</lastmod>
+    <lastmod>2019-07-23T21:45:37-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://GreyWallIT.github.io/tags/</loc>
-    <lastmod>2019-06-28T21:28:09-05:00</lastmod>
+    <lastmod>2019-07-23T21:45:37-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://GreyWallIT.github.io/topics/</loc>
-    <lastmod>2019-06-28T21:28:09-05:00</lastmod>
+    <lastmod>2019-07-23T21:45:37-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://GreyWallIT.github.io/tags/windows/</loc>
-    <lastmod>2019-06-19T20:52:59-05:00</lastmod>
+    <lastmod>2019-07-23T21:45:37-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://GreyWallIT.github.io/topics/windows/</loc>
-    <lastmod>2019-06-19T20:52:59-05:00</lastmod>
+    <lastmod>2019-07-23T21:45:37-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://GreyWallIT.github.io/tags/windows-admin-center/</loc>
+    <lastmod>2019-07-23T21:45:37-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://GreyWallIT.github.io/tags/windows-server/</loc>
-    <lastmod>2019-06-19T20:52:59-05:00</lastmod>
+    <lastmod>2019-07-23T21:45:37-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://GreyWallIT.github.io/tags/windows-server-core/</loc>
-    <lastmod>2019-06-19T20:52:59-05:00</lastmod>
+    <lastmod>2019-07-23T21:45:37-05:00</lastmod>
     <priority>0</priority>
   </url>
   

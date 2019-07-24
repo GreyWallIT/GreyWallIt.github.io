@@ -6,10 +6,19 @@
     <description>Recent content on Grey Wall IT</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019. All rights reserved.</copyright>
-    <lastBuildDate>Fri, 28 Jun 2019 21:28:09 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jul 2019 21:45:37 -0500</lastBuildDate>
     
 	<atom:link href="https://GreyWallIT.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Install Windows Admin Center on Windows Server Core</title>
+      <link>https://GreyWallIT.github.io/windows/installwacsrvcore/</link>
+      <pubDate>Tue, 23 Jul 2019 21:45:37 -0500</pubDate>
+      
+      <guid>https://GreyWallIT.github.io/windows/installwacsrvcore/</guid>
+      <description>The Windows Admin Center is a free tool from Microsoft that I like to think of as the next iteration of Windows Server Manager or the RSAT tools. It lets you manage your servers, clusters, hyper-converged infrastructure, Windows 10 computers, and a host of other features and functions come with that. If you have co-workers that manage servers but are intimidated by the command line it makes it difficult to be able to deploy Windows Server Core in your environment as it may lessen the ability of the team to manage those servers.</description>
+    </item>
     
     <item>
       <title>FormatEnumerationLimit - Reduce Truncating Output</title>
