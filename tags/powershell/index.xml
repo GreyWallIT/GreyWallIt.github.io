@@ -1,15 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Powershell on Grey Wall IT</title>
+    <title>PowerShell on Grey Wall IT</title>
     <link>https://GreyWallIT.github.io/tags/powershell/</link>
-    <description>Recent content in Powershell on Grey Wall IT</description>
+    <description>Recent content in PowerShell on Grey Wall IT</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
     <copyright>&amp;copy; 2019. All rights reserved.</copyright>
-    <lastBuildDate>Tue, 23 Jul 2019 21:45:37 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2020 14:35:27 -0600</lastBuildDate>
     
 	<atom:link href="https://GreyWallIT.github.io/tags/powershell/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Batch Renaming Files in PowerShell</title>
+      <link>https://GreyWallIT.github.io/powershell/batchfilerename/</link>
+      <pubDate>Sun, 01 Mar 2020 14:35:27 -0600</pubDate>
+      
+      <guid>https://GreyWallIT.github.io/powershell/batchfilerename/</guid>
+      <description>The other day I had a request to rename some files (i.e. &amp;ldquo;we have millions of files that all need to be renamed can you do that?&amp;quot;).
+I said of course, and thankfully it was the same change that needed to be done for every file. The leading 1 of the files needed to be replaced with a 0. There was a large conversion going on from one software program to another and this was part of how they were tracking the migrations of the files.</description>
+    </item>
     
     <item>
       <title>Install Windows Admin Center on Windows Server Core</title>
@@ -28,7 +39,7 @@
       <guid>https://GreyWallIT.github.io/powershell/formatenumerationlimit/</guid>
       <description>Sometimes there is output from a cmdlet that gets truncated on the screen, even though there is more space to fill in the console window.
 To not truncate the output of your PowerShell commands set the variable $FormatEnumerationLimit to -1
-$FormatEnumerationLimit=-1  Now the output from cmdlets will fill the console window.
+$FormatEnumerationLimit=-1Now the output from cmdlets will fill the console window.
 So what is the $FormatEnumerationLimit variable? Here is the definition from the about_preferences doc:
  $FormatEnumerationLimit Determines how many enumerated items are included in a display.</description>
     </item>
@@ -40,8 +51,8 @@ So what is the $FormatEnumerationLimit variable? Here is the definition from the
       
       <guid>https://GreyWallIT.github.io/windows/powershelldefaultservercore/</guid>
       <description>The default shell for Windows Server Core is the command prompt. Ideally you will change that to PowerShell so you don&amp;rsquo;t have to manually run PowerShell if you ever need to RDP into the server. To make this change login to your server core machine and run PowerShell:
-C:\windows\system32\powershell.exe  Edit the registry to set PowerShell as the default Shell:
-Set-ItemProperty -Path &#39;HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon&#39; -Name Shell -Value &#39;powershell.exe&#39;  The next time you login the shell will immediately run PowerShell.</description>
+C:\windows\system32\powershell.exeEdit the registry to set PowerShell as the default Shell:
+Set-ItemProperty -Path &#39;HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon&#39; -Name Shell -Value &#39;powershell.exe&#39;The next time you login the shell will immediately run PowerShell.</description>
     </item>
     
   </channel>

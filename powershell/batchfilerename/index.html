@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.64.1" />
 
-  <title>Install Windows Admin Center on Windows Server Core &middot; Grey Wall IT</title>
+  <title>Batch Renaming Files in PowerShell &middot; Grey Wall IT</title>
 
     
 
@@ -226,31 +226,26 @@
 
 
 <div class="header">
-  <h1>Install Windows Admin Center on Windows Server Core</h1>
+  <h1>Batch Renaming Files in PowerShell</h1>
   <h2></h2>
 </div>
 <div class="content">
-  <p>The Windows Admin Center is a free tool from Microsoft that I like to think of as the next iteration of Windows Server Manager or the RSAT tools. It lets you manage your servers, clusters, hyper-converged infrastructure, Windows 10 computers, and a host of other features and functions come with that. If you have co-workers that manage servers but are intimidated by the command line it makes it difficult to be able to deploy Windows Server Core in your environment as it may lessen the ability of the team to manage those servers. Windows Admin Center gives the GUI back to Windows Server Core installations (somewhat).</p>
-<p>After logging in to your server run PowerShell.</p>
-<pre><code>C:\temp\powershell.exe
-</code></pre><h3 id="step-1---download-windows-admin-center">Step 1 - Download Windows Admin Center</h3>
-<p>Download the latest version of the Windows Admin Center MSI from Microsoft to your preferred directory. I am putting it in C:\temp.</p>
-<pre><code>Invoke-WebRequest https://aka.ms/wacdownload -UseBasicParsing -OutFile C:\temp\WAC.msi
-</code></pre><h3 id="step-2---get-a-certificate">Step 2 - Get a Certificate</h3>
-<p>We don&rsquo;t have a certificate authority setup for this walkthrough, so we&rsquo;ll make a new self-signed certificate to use. Windows Admin Center requires an HTTPS connection. In this example we&rsquo;re creating a certificate that will be valid for two years from today&rsquo;s date. The <em>Get-Date</em> cmdlet returns today&rsquo;s date. When we surround that with parentheses we can use the <em>AddDays</em> method to add as many days after today&rsquo;s date as we want. 730 days is (roughly) two years from today&rsquo;s date.</p>
-<pre><code>New-SelfSignedCertificate -CertStoreLocation 'Cert:\LocalMachine\My' -Type SSLServerAuthentication -DnsName 'WACSRV' -NotAfer (Get-Date).AddDays(730)
-</code></pre><h3 id="step-3---get-a-thumbprint">Step 3 - Get a Thumbprint</h3>
-<p>Get the thumbprint of the certificate you want to use and store it in a variable for later use. I will use the self-signed certificate I just made</p>
-<pre><code>$thumbprint = (Get-ChildItem Cert:\LocalMachine\My\ -SSLServerAuthentication).Thumbprint
-</code></pre><h3 id="step-4---install-windows-admin-center">Step 4 - Install Windows Admin Center</h3>
-<p>Install Windows Admin Center using MSIEXEC. The number for SME_PORT can be whichever port you want to run the admin center on. I&rsquo;m using port 9999.</p>
-<p><strong>NOTE: The documentation states that dot notation for installing with MSIEXEC will not work if you are executing from PowerShell, so be sure to put the full path in for the location of the MSI file.</strong></p>
-<pre><code>msiexec.exe /I C:\temp\WAC.msi /qn SME_PORT=9999 SME_THUMBPRINT=$thumbprint SSL_CERTIFICATEOPTION=installed /Lvx C:\temp\WAC.log
-</code></pre><h3 id="step-5---verify-the-wac-is-running">Step 5 - Verify the WAC is Running</h3>
-<p>You can review the log to see if the installation was successful, or try to connect to the admin center with Invoke-WebRequest (I installed to port 9999, so I am connecting to port 9999)</p>
-<pre><code>Invoke-WebRequest https://localhost:9999
-</code></pre><p>If you get a powershell error &ldquo;Could not establish trust relationship for the SSL/TLS secure channel&rdquo; or &ldquo;The remote server returned an error: (401) Unauthorized&rdquo; you know it is up and running. The error in our case for this post is from the Windows Admin Center running with a self-signed certificate. If you access this site from an Edge (version 1709 or later) or Chrome browser you should get a prompt to login and view the Admin Center in all its glory. The login credentials will be any administrative credentials of the server running WAC.</p>
-<p><img src="https://GreyWallIT.github.io/img/windows/WAC042019.png" alt="&ldquo;Windows Admin Center&rdquo;"></p>
+  <p>The other day I had a request to rename some files (i.e. &ldquo;we have millions of files that all need to be renamed can you do that?&quot;).</p>
+<p>I said of course, and thankfully it was the same change that needed to be done for every file. The leading 1 of the files needed to be replaced with a 0. There was a large conversion going on from one software program to another and this was part of how they were tracking the migrations of the files.</p>
+<p>Here is how I made this request happen:</p>
+<pre><code>Get-ChildItem C:\PARENT_FOLDER -File -Recurse | ForEach-Object { Rename-Item $_.FullName ($_.Name -Replace &quot;^1&quot;,&quot;0&quot;) }
+</code></pre><p>Here is what is happening.</p>
+<p>This part of the command will go through the C:\PARENT_FOLDER and every subfolder of it, picking out each file:</p>
+<pre><code>Get-ChildItem C:\PARENT_FOLDER -File -Recurse
+</code></pre><p>We then pipe that to take action on each file with the &ldquo;|&rdquo; character and the ForEach-Object cmdlet:</p>
+<pre><code>| ForEach-Object
+</code></pre><p>The last bit in between the <strong>{}</strong> characters is where the renaming happens. The <strong>$_</strong> part takes the current file being worked on. The <strong>$_.FullName</strong> part takes the full name of the item which is also known as the path, for example <strong>C:\PARENT_FOLDER\Subfolder1\123456789.pdf</strong>. Since this comes first after the <strong>Rename-Item</strong> cmdlet, it will be the file that is going to be renamed. The last bit between the <strong>()</strong> characters is what we will rename the file to.</p>
+<p><strong>$_.Name</strong> refers to the file name of the current item being worked on, <strong>123456789.pdf</strong> for this example. The <strong>-Replace</strong> parameter takes this file and replaces the leading 1 - the <strong>&ldquo;^1&rdquo;</strong> part - with a 0 - the <strong>&ldquo;0&rdquo;</strong> part. The <strong>&ldquo;^1&rdquo;</strong> is a regular expression. The <strong>^</strong> character says look at the beginning, and the <strong>1</strong> says find a 1. By putting <em><strong>&ldquo;^1&rdquo;</strong></em> we are saying &ldquo;find a 1 that starts the name&rdquo;. If the current file does start with a 1 it will match that 1 and replace it with a 0. If we wanted to replace the 1 with the letter Z we would change that part of the cmdlet to be:</p>
+<pre><code>-Replace &quot;^1&quot;,&quot;Z&quot;
+</code></pre><p>If we wanted to replace the &ldquo;12&rdquo; at the beginning of the file name with the letter Z we could change it to be:</p>
+<pre><code>-Replace &quot;^12&quot;,&quot;Z&quot;
+</code></pre><p>PowerShell made thist task really easy to accomplish. It did take a few hours to run through the millions of files, but without being able to script the rename in some way it never would have been able to happen.</p>
+<p>Do you know of a better way this could have been accomplished? Let me know.</p>
 
 </div>
 
